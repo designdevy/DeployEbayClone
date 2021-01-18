@@ -1,13 +1,19 @@
 //export {From}
-const HDWalletProvider = require('truffle-hdwallet-provider');
-const Web3 = require('web3');
-const output = require('./compile');
-const bytecode = output.evm.bytecode['object'];
+import {output}  from './compile.js';
+const HDWalletProvider = import('truffle-hdwallet-provider');
+const Web3 = import('web3');
+const mnemonic = 'card guard cannon hire major culture cinnamon method dawn beef affair follow'
+//const output = import('./compile');
+const bytecode = output.evm.bytecode
+//const bytecode = output.evm.bytecode['object'];
+//const abi = output.abi;
 const abi = output.abi;
-const provider = new HDWalletProvider(
+let provider = new HDWalletProvider(mnemonic, 'https://rinkeby.infura.io/v3/7fe64b5201de4d0982c6b5dbe23f8305');
+// Or, alternatively pass in a zero-based address index.
+/* const provider = new HDWalletProvider(
     'card guard cannon hire major culture cinnamon method dawn beef affair follow',
          'https://rinkeby.infura.io/v3/7fe64b5201de4d0982c6b5dbe23f8305'
-);
+); */
 const web3 = new Web3(provider); 
 //export default address;
 //const deploy = async () => {
